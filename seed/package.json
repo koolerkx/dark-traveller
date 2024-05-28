@@ -1,0 +1,16 @@
+{
+  "name": "firestore-seeder",
+  "version": "1.0.0",
+  "main": "dist/seed.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/seed.js",
+    "seed": "tsc && node dist/seed.js"
+  },
+  "dependencies": {
+    "@types/node": "^20.12.12",
+    "dotenv": "^16.4.5",
+    "firebase-admin": "^12.1.1",
+    "typescript": "^5.4.5"
+  }
+}

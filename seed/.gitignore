@@ -1,0 +1,5 @@
+node_modules
+dist
+
+.env
+dark-traveller-24-dev-firebase-adminsdk*.json

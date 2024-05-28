@@ -1,0 +1,92 @@
+[
+  {
+    "Point": "天水圍運動場",
+    "Description": "天水圍運動場是本地居民鍛鍊身體的熱門場所，提供多種運動設施，如田徑場和足球場，適合各年齡層使用。",
+    "HeroImage": null,
+    "location": {
+      "Lat": 22.453795,
+      "Long": 114.004094
+    },
+    "isPublic": true
+  },
+  {
+    "Point": "天水圍游泳池",
+    "Description": "天水圍游泳池擁有標準競賽池和兒童戲水區，是家庭消暑的好去處，提供優質的游泳課程和訓練。",
+    "HeroImage": null,
+    "location": {
+      "Lat": 22.455595,
+      "Long": 114.006468
+    },
+    "isPublic": true
+  },
+  {
+    "Point": "天秀路橋上",
+    "Description": "天秀路橋是天水圍的地標之一，提供行人和車輛通行，從橋上可俯瞰整個社區的美景，日夜景色迷人。",
+    "HeroImage": null,
+    "location": {
+      "Lat": 22.466768,
+      "Long": 113.996049
+    },
+    "isPublic": true
+  },
+  {
+    "Point": "天瑞體育館",
+    "Description": "天瑞體育館設備齊全，包括籃球場、羽毛球場等，經常舉辦各類體育活動和比賽，是運動愛好者的聚集地。",
+    "HeroImage": null,
+    "location": {
+      "Lat": 22.455055,
+      "Long": 113.997762
+    },
+    "isPublic": true
+  },
+  {
+    "Point": "天瑞邨滾軸溜冰場",
+    "Description": "天瑞邨滾軸溜冰場適合各年齡層的溜冰愛好者，是練習技藝和放鬆身心的理想場所，設施安全完善。",
+    "HeroImage": null,
+    "location": {
+      "Lat": 22.453738,
+      "Long": 113.999267
+    },
+    "isPublic": true
+  },
+  {
+    "Point": "景湖居門口",
+    "Description": "景湖居門口寬敞雅緻，四季花卉盛開，是住戶和遊客常來的打卡點，入口設有安全門禁系統，保證居住安全。",
+    "HeroImage": null,
+    "location": {
+      "Lat": 22.457827,
+      "Long": 114.005031
+    },
+    "isPublic": true
+  },
+  {
+    "Point": "濕地公園門口",
+    "Description": "濕地公園門口是進入自然保護區的主要通道，園區內有豐富的動植物資源，是自然愛好者的探險天堂。",
+    "HeroImage": null,
+    "location": {
+      "Lat": 22.467979,
+      "Long": 114.003499
+    },
+    "isPublic": true
+  },
+  {
+    "Point": "流浮山消防局",
+    "Description": "流浮山消防局負責周邊區域的消防安全，設施現代化，隊員訓練有素，全天候待命，保障居民生命財產安全。",
+    "HeroImage": null,
+    "location": {
+      "Lat": 22.471286,
+      "Long": 114.002369
+    },
+    "isPublic": true
+  },
+  {
+    "Point": "天水圍消防局",
+    "Description": "天水圍消防局擔負本區消防救援任務，裝備先進，隊伍專業，常舉辦消防演練，提高居民的防災意識。",
+    "HeroImage": null,
+    "location": {
+      "Lat": 22.450653,
+      "Long": 114.001763
+    },
+    "isPublic": true
+  }
+]

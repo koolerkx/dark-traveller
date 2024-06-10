@@ -6,3 +6,7 @@ submodule:
 .PHONY: deploy_hosting
 deploy_hosting:
 	firebase deploy --only hosting
+	
+.PHONY: emulator
+emulator:
+	firebase emulators:start

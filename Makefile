@@ -9,4 +9,4 @@ deploy_hosting:
 	
 .PHONY: emulator
 emulator:
-	firebase emulators:start
+	firebase emulators:start --import emulator_data --export-on-exit emulator_data

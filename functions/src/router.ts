@@ -1,12 +1,17 @@
 import * as express from "express";
 import { getAllPoints } from "./controller/pointController";
+import { firebaseAdminMiddleware } from "./middleware/firebaseAdminMiddleware";
 
-const router = express.Router();
+const authRouter = express.Router();
 
-router.get("/", (req, res) => {
+authRouter.use(firebaseAdminMiddleware);
+
+authRouter.get("/points", getAllPoints);
+
+const publicRouter = express.Router();
+
+publicRouter.get("/", (req, res) => {
   res.send("Hello Function!");
 });
 
-router.get("/points", getAllPoints);
-
-export default router;
+export { authRouter, publicRouter };

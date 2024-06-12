@@ -1,7 +1,7 @@
 import * as express from "express";
 import * as logger from "firebase-functions/logger";
 import { onRequest } from "firebase-functions/v2/https";
-import router from "./router";
+import { authRouter, publicRouter } from "./router";
 
 export const helloWorld = onRequest((request, response) => {
   logger.info("Hello logs!", { structuredData: true });
@@ -10,6 +10,7 @@ export const helloWorld = onRequest((request, response) => {
 
 const app = express();
 
-app.use("/v1", router);
+app.use("/v1", authRouter);
+app.use("/v1", publicRouter);
 
 export const api = onRequest(app);

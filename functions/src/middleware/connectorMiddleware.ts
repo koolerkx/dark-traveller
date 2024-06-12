@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { PointConnector } from "../model/point";
-import { ContextNotExistError } from "../error";
+import { ContextNotExistError } from "../error/error";
 
 // This middleware must put after firebaseAdminMiddleware
 export const connectorMiddleware = async (

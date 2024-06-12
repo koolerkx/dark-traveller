@@ -1,8 +1,12 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
+import { ConnectorNotExistError } from "../error/error";
 
-export const getAllPoints = async (req: Request, res: Response) => {
-  if (!req.connector)
-    return res.status(500).json({ message: "Connector not in context" });
+export const getAllPoints = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  if (!req.connector) return next(new ConnectorNotExistError());
 
   const points = await req.connector.point.getPoints();
 

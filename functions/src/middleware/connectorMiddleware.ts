@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from "express";
 import { PointConnector } from "../model/point";
 import { ContextNotExistError } from "../error/error";
+import { UserConnector } from "../model/user";
 
 // This middleware must put after firebaseAdminMiddleware
 export const connectorMiddleware = async (
@@ -12,7 +13,10 @@ export const connectorMiddleware = async (
     throw new ContextNotExistError();
   }
 
-  req.connector = { point: new PointConnector(req.context.db) };
+  req.connector = {
+    point: new PointConnector(req.context.db),
+    user: new UserConnector(req.context.db),
+  };
 
   next();
 };
@@ -23,6 +27,7 @@ declare global {
     interface Request {
       connector?: {
         point: PointConnector;
+        user: UserConnector;
       };
     }
   }

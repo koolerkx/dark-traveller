@@ -1,5 +1,5 @@
 import * as express from "express";
-import { getAllPoints } from "./controller/pointController";
+import { capturePoint, getAllPoints } from "./controller/pointController";
 import { firebaseAdminMiddleware } from "./middleware/firebaseAdminMiddleware";
 import { firebaseAuthMiddleware } from "./middleware/firebaseAuthMiddleware";
 import { connectorMiddleware } from "./middleware/connectorMiddleware";
@@ -11,6 +11,7 @@ authRouter.use(firebaseAuthMiddleware);
 authRouter.use(connectorMiddleware);
 
 authRouter.get("/points", getAllPoints);
+authRouter.post("/capture", capturePoint);
 
 const publicRouter = express.Router();
 

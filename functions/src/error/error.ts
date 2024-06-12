@@ -21,3 +21,15 @@ export class ConnectorNotExistError extends Error {
     }
   }
 }
+
+export class RequestParamsMissingError extends Error {
+  constructor(params?: string[]) {
+    super(`Params are missing in request${": " + params?.join(", ")}`);
+
+    this.name = "RequestParamsMissingError";
+
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, ContextNotExistError);
+    }
+  }
+}

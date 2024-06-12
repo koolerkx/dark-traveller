@@ -27,4 +27,25 @@ export class PointConnector {
 
     return points;
   };
+
+  capturePoint = async ({
+    pointDocId,
+    userDocId,
+    userEmail,
+  }: {
+    pointDocId: string;
+    userDocId: string;
+    userEmail: string;
+  }) => {
+    await this.db
+      .collection("users")
+      .doc(userDocId)
+      .collection("capturedPoints")
+      .doc()
+      .set({
+        pointDocId,
+        userEmail,
+        createdAt: new Date().toISOString(),
+      });
+  };
 }

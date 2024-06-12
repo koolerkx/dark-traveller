@@ -1,6 +1,12 @@
 # Cloud Function
 
-Serve as backend function for app to use
+Serve as backend function for app to us
+
+## Data Model
+
+- User
+  - SubCollection: Captured Point
+- Point
 
 ## End Point
 

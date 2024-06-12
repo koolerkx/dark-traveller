@@ -1,22 +1,10 @@
 import { Request, Response } from "express";
-import * as logger from "firebase-functions/logger";
-import { ContextNotExistError } from "../error";
 
 export const getAllPoints = async (req: Request, res: Response) => {
-  if (!req.context) {
-    throw new ContextNotExistError();
-  }
+  if (!req.connector)
+    return res.status(500).json({ message: "Connector not in context" });
 
-  try {
-    const { db } = req.context;
+  const points = await req.connector.point.getPoints();
 
-    const allPoints = await db.collection("points").get();
-
-    return res.status(200).json(allPoints.docs);
-  } catch (error) {
-    logger.error("error: getAllPoints", { error });
-    return res
-      .status(500)
-      .json({ message: "Something went wrong when getting all points" });
-  }
+  return res.status(200).json(points);
 };

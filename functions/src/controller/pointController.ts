@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import {
+  CapturedPointInCooldownError,
   ConnectorNotExistError,
   RequestParamsMissingError,
 } from "../error/error";
@@ -27,11 +28,20 @@ export const capturePoint = async (
 
   const user = await req.connector.user.getUserByEmail(req.user!.email);
 
-  req.connector.point.capturePoint({
-    userDocId: user.documentId,
-    userEmail: user.email,
-    pointDocId: req.body.pointDocId,
-  });
+  try {
+    await req.connector.point.capturePoint({
+      userDocId: user.documentId,
+      userEmail: user.email,
+      pointDocId: req.body.pointDocId,
+    });
+  } catch (error) {
+    if (error instanceof CapturedPointInCooldownError) {
+      return res
+        .status(400)
+        .json({ message: error.message, info: error.messageInfo() });
+    }
+    return next(error);
+  }
 
-  return res.status(200).json({});
+  return res.status(204).send();
 };

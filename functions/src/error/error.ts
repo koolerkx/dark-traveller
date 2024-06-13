@@ -1,3 +1,13 @@
+import { POINT_CAPTURE_COOLDOWN_SECONDS } from "../constant";
+
+export abstract class ErrorWithMessageInfo extends Error {
+  constructor(message: string) {
+    super(message);
+  }
+
+  abstract messageInfo(): Record<string, string | number | undefined>;
+}
+
 export class ContextNotExistError extends Error {
   constructor() {
     super(`DB Context not exist in request`);
@@ -31,5 +41,31 @@ export class RequestParamsMissingError extends Error {
     if (Error.captureStackTrace) {
       Error.captureStackTrace(this, ContextNotExistError);
     }
+  }
+}
+
+export class CapturedPointInCooldownError extends ErrorWithMessageInfo {
+  remainCooldownSeconds: number;
+  cooldownSeconds: number;
+
+  constructor(remainCooldownSeconds: number) {
+    super(
+      `Point was captured within the ${POINT_CAPTURE_COOLDOWN_SECONDS} seconds, remain ${remainCooldownSeconds} seconds`
+    );
+    this.remainCooldownSeconds = remainCooldownSeconds;
+    this.cooldownSeconds = POINT_CAPTURE_COOLDOWN_SECONDS;
+
+    this.name = "CapturedPointInCooldownError";
+
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, ContextNotExistError);
+    }
+  }
+
+  messageInfo() {
+    return {
+      remainCooldownSeconds: this.remainCooldownSeconds,
+      cooldownSeconds: this.cooldownSeconds,
+    };
   }
 }

@@ -43,10 +43,12 @@ export class PointConnector {
   capturePoint = async ({
     pointDocId,
     userDocId,
+    userName,
     userEmail,
   }: {
     pointDocId: string;
     userDocId: string;
+    userName: string;
     userEmail: string;
   }) => {
     const now = new Date();
@@ -95,6 +97,7 @@ export class PointConnector {
       // Insert new record
       await t.set(userRef.collection("capturedPoints").doc(), {
         pointDocId,
+        userName,
         userEmail,
         createdAt: now.toISOString(),
         clearedAt: null,

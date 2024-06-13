@@ -31,6 +31,7 @@ export const capturePoint = async (
   try {
     await req.connector.point.capturePoint({
       userDocId: user.documentId,
+      userName: user.name,
       userEmail: user.email,
       pointDocId: req.body.pointDocId,
     });
@@ -43,7 +44,7 @@ export const capturePoint = async (
     return next(error);
   }
 
-  return res.status(204).send();
+  return res.sendStatus(204);
 };
 
 export const clearPoint = async (
@@ -66,5 +67,5 @@ export const clearPoint = async (
     return next(error);
   }
 
-  return res.status(204).send();
+  return res.sendStatus(204);
 };

@@ -3,6 +3,7 @@ import {
   capturePoint,
   clearPoint,
   getAllPoints,
+  getPoint,
 } from "./controller/pointController";
 import { firebaseAdminMiddleware } from "./middleware/firebaseAdminMiddleware";
 import { firebaseAuthMiddleware } from "./middleware/firebaseAuthMiddleware";
@@ -14,6 +15,7 @@ authRouter.use(firebaseAdminMiddleware);
 authRouter.use(firebaseAuthMiddleware);
 authRouter.use(connectorMiddleware);
 
+authRouter.get("/points/:pointDocId", getPoint);
 authRouter.get("/points", getAllPoints);
 authRouter.post("/points/capture", capturePoint);
 authRouter.post("/points/clear", clearPoint);

@@ -1,7 +1,10 @@
 import { differenceInSeconds } from "date-fns";
 import { Firestore } from "firebase-admin/firestore";
 import { POINT_CAPTURE_COOLDOWN_SECONDS } from "../constant";
-import { CapturedPointInCooldownError } from "../error/error";
+import {
+  CapturedPointInCooldownError,
+  PointNotFoundError,
+} from "../error/error";
 
 export interface Point {
   id: string;
@@ -29,6 +32,14 @@ export class PointConnector {
   constructor(db: Firestore) {
     this.db = db;
   }
+
+  getPoint = async (pointDocId: string): Promise<Point> => {
+    const pointDoc = await this.db.collection("points").doc(pointDocId).get();
+
+    if (!pointDoc.exists) throw new PointNotFoundError();
+
+    return { id: pointDoc.id, ...pointDoc.data() } as Point;
+  };
 
   getPoints = async (): Promise<Point[]> => {
     const pointsSnapshot = await this.db.collection("points").get();

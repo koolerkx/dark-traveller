@@ -61,9 +61,11 @@ export const capturePoint = async (
     });
   } catch (error) {
     if (error instanceof CapturedPointInCooldownError) {
-      return res
-        .status(400)
-        .json({ message: error.message, info: error.messageInfo() });
+      return res.status(400).json({
+        error: error.name,
+        message: error.message,
+        info: error.messageInfo(),
+      });
     }
     return next(error);
   }
@@ -84,9 +86,11 @@ export const clearPoint = async (
     await req.connector.point.clearPoint({ pointDocId: req.body.pointDocId });
   } catch (error) {
     if (error instanceof CapturedPointInCooldownError) {
-      return res
-        .status(400)
-        .json({ message: error.message, info: error.messageInfo() });
+      return res.status(400).json({
+        error: error.name,
+        message: error.message,
+        info: error.messageInfo(),
+      });
     }
     return next(error);
   }

@@ -87,7 +87,7 @@ const seedData = async () => {
     // Seed new data
     const batch = db.batch();
     for (const [docId, docData] of Object.entries(data)) {
-      const docRef = db.collection(collectionName).doc(docId);
+      const docRef = db.collection(collectionName).doc();
       batch.set(docRef, docData);
     }
 

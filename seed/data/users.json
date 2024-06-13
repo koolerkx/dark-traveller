@@ -1,17 +1,14 @@
 [
   {
     "name": "SY1",
-    "email": "sy1@example.com",
-    "capturedPoints": []
+    "email": "sy1@example.com"
   },
   {
     "name": "LK1",
-    "email": "lk1@example.com",
-    "capturedPoints": []
+    "email": "lk1@example.com"
   },
   {
     "name": "SW1",
-    "email": "sw1@example.com",
-    "capturedPoints": []
+    "email": "sw1@example.com"
   }
 ]

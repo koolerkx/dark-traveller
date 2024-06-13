@@ -45,3 +45,26 @@ export const capturePoint = async (
 
   return res.status(204).send();
 };
+
+export const clearPoint = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  if (!req.connector) return next(new ConnectorNotExistError());
+  if (!req.body.pointDocId)
+    return next(new RequestParamsMissingError(["pointDocId"]));
+
+  try {
+    await req.connector.point.clearPoint({ pointDocId: req.body.pointDocId });
+  } catch (error) {
+    if (error instanceof CapturedPointInCooldownError) {
+      return res
+        .status(400)
+        .json({ message: error.message, info: error.messageInfo() });
+    }
+    return next(error);
+  }
+
+  return res.status(204).send();
+};

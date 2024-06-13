@@ -27,7 +27,7 @@ export class ConnectorNotExistError extends Error {
     this.name = "ConnectorNotExistError";
 
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, ContextNotExistError);
+      Error.captureStackTrace(this, ConnectorNotExistError);
     }
   }
 }
@@ -39,7 +39,7 @@ export class RequestParamsMissingError extends Error {
     this.name = "RequestParamsMissingError";
 
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, ContextNotExistError);
+      Error.captureStackTrace(this, RequestParamsMissingError);
     }
   }
 }
@@ -58,7 +58,7 @@ export class CapturedPointInCooldownError extends ErrorWithMessageInfo {
     this.name = "CapturedPointInCooldownError";
 
     if (Error.captureStackTrace) {
-      Error.captureStackTrace(this, ContextNotExistError);
+      Error.captureStackTrace(this, CapturedPointInCooldownError);
     }
   }
 
@@ -67,5 +67,17 @@ export class CapturedPointInCooldownError extends ErrorWithMessageInfo {
       remainCooldownSeconds: this.remainCooldownSeconds,
       cooldownSeconds: this.cooldownSeconds,
     };
+  }
+}
+
+export class PointNotFoundError extends Error {
+  constructor() {
+    super(`Point not found`);
+
+    this.name = "PointNotFoundError";
+
+    if (Error.captureStackTrace) {
+      Error.captureStackTrace(this, PointNotFoundError);
+    }
   }
 }
